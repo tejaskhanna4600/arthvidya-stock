@@ -1,0 +1,11 @@
+TK Logo Setup
+=============
+Place your TK logo (PNG) image file here as: tk-logo.png
+
+The logo will appear in the top-right corner of:
+- Landing page
+- Admin panel
+- Screen panel
+- Team panel
+
+Full path: frontend/public/assets/tk-logo.png

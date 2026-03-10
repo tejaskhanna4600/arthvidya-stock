@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: arthvidya-stock-exchange
+    runtime: python
+    plan: free
+    buildCommand: |
+      cd frontend
+      npm ci
+      npm run build
+      cd ..
+      pip install -r server/requirements.txt
+    startCommand: cd server && gunicorn -k eventlet -w 1 -b 0.0.0.0:$PORT app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: SESSION_COOKIE_SECURE
+        value: "1"
+      - key: AUTO_BACKUP_INTERVAL_SEC
+        value: "300"
+      - key: BACKUP_DIR
+        value: "/opt/render/project/src/server/backups"
