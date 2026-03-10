@@ -33,7 +33,7 @@ interface CandlestickChartProps {
 
 function CandlestickChart({ data, name, industry }: CandlestickChartProps) {
   const { candles, yTicks, xTicks } = useMemo(() => {
-    if (!data.length) return { candles: [] as Array<{ x: number; halfW: number; yH: number; yL: number; bodyTop: number; bodyH: number; isUp: boolean }>, yTicks: [] as Array<{ value: number; y: number }>, xTicks: [] as Array<{ value: number; x: number }> };
+    if (!data.length) return { candles: [] as Array<{ x: number; halfW: number; yH: number; yL: number; bodyTop: number; bodyH: number; isUp: boolean; round: number; open: number; high: number; low: number; close: number }>, yTicks: [] as Array<{ value: number; y: number }>, xTicks: [] as Array<{ value: number; x: number }> };
     const prices = data.flatMap((d) => [d.open, d.high, d.low, d.close]);
     const yMin = Math.min(...prices);
     const yMax = Math.max(...prices);
@@ -240,3 +240,4 @@ export default function StockCharts({ stocks }: StockChartsProps) {
     </Card>
   );
 }
+
